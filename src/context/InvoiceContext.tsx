@@ -98,4 +98,6 @@ export function useInvoices() {
 
   if (!context)
     throw new Error("useInvoices must be used inside InvoiceProvider");
+
+  return context;
 }
