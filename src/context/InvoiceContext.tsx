@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { invoiceData } from "../assets/invoices.ts";
 
 // invoice interface
 interface Invoice {
@@ -39,12 +40,18 @@ interface InvoiceContextType {
 const InvoiceContext = createContext<InvoiceContextType | null>(null);
 
 export function InvoiceProvider({ children }: { children: React.ReactNode }) {
-  const [invoices, setInvoices] = useState<Invoice[]>([]);
+  const [invoices, setInvoices] = useState(invoiceData as Invoice[]);
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
     const storedInvoices = localStorage.getItem("invoices");
-    if (storedInvoices) setInvoices(JSON.parse(storedInvoices));
+    const parsed = storedInvoices ? JSON.parse(storedInvoices) : null;
+
+    if (parsed && parsed.length > 0) {
+      setInvoices(parsed);
+    } else {
+      localStorage.setItem("invoices", JSON.stringify(invoiceData));
+    }
 
     const storedTheme = localStorage.getItem("theme") || "light";
     setTheme(storedTheme);
