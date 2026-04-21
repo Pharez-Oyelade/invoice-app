@@ -45,7 +45,10 @@ export const invoiceData = [
       postCode: "S1 0JY",
       country: "United Kingdom",
     },
-    items: [{ name: "Brand Guidlines", quantity: 1, price: 1800.9 }],
-    total: 1800.9,
+    items: [
+      { name: "Banner Design", quantity: 1, price: 156 },
+      { name: "Email Design", quantity: 2, price: 200 },
+    ],
+    total: 556,
   },
 ];
