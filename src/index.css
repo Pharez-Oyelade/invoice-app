@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap'); */
 
 :root {
   /* Light mode */
@@ -8,6 +8,11 @@
   --bg-accent-hover: #9277FF;
   --bg-sidebar: #373B53;
   --text-primary: #0C0E16;
+  --button-primary: #7C5DFA;
+  --button-primary-hover: #9277FF;
+  --button-secondary: #F9FAFE;
+  --button-secondary-hover: #DFE3FA;
+  --text-secondary: #888EB0;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -19,6 +24,8 @@
 [data-theme="dark"] {
   --bg-primary: #141625;
   --text-primary: #FFF;
+    --button-secondary: #252945;
+  --button-secondary-hover: #FFFFFF;
 }
 
 #root {
@@ -33,6 +40,11 @@
   box-sizing: border-box;
 }
 
+* {
+  font: "League Spartan", sans-serif;
+  font-weight: 500;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -43,9 +55,11 @@ body {
 
 h1,
 h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 100%;
+  letter-spacing: -1.13px;
+  color: var(--text-primary);
 }
 
 h1 {
