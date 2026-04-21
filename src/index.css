@@ -1,3 +1,4 @@
+@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
 
 :root {
@@ -5,12 +6,19 @@
   --bg-primary: #F8F8FB;
   --bg-accent: #7C5DFA;
   --bg-accent-hover: #9277FF;
+  --bg-sidebar: #373B53;
+  --text-primary: #0C0E16;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
    --bg-primary: #141625;
   }
+} */
+
+[data-theme="dark"] {
+  --bg-primary: #141625;
+  --text-primary: #FFF;
 }
 
 #root {
@@ -27,6 +35,10 @@
 
 body {
   margin: 0;
+  padding: 0;
+
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 h1,
@@ -58,7 +70,7 @@ p {
   margin: 0;
 }
 
-code,
+/* code,
 .counter {
   font-family: var(--mono);
   display: inline-flex;
@@ -71,4 +83,60 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+} */
+
+
+/* sidebar */
+.sidebar {
+  width: 103px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  /* align-items: center; */
+  /* height: 100%; */
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100svh;
+  background-color: var(--bg-sidebar);
+  color: white;
+
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
+
+.sidebar-actions {
+  padding-bottom: 17%;
+}
+
+.logo {
+  width: 103px;
+  height: 103px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: var(--bg-accent);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.line-break {
+  height: 1px;
+  width: 100%;
+  background-color: #494E6E;
+  margin: 12px 0;
+}
+
+/* .img-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} */
