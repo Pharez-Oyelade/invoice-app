@@ -14,6 +14,8 @@ const InvoiceListPage = () => {
 
   // const OpenCreate = () => {setEditingInvoice(null); setIsOpen(true)}
 
+  // return if no invoices
+
   return (
     <main className="bg-(--bg-primary) w-full flex flex-col justify-center items-center relative min-h-screen">
       <div className=" mt-[77px] w-[75%] m-auto">
@@ -36,6 +38,25 @@ const InvoiceListPage = () => {
         </header>
 
         <section className="w-full mt-[48px]">
+          {invoices.length === 0 && (
+            <div className="flex flex-col justify-center items-center w-full m-auto">
+              <div className="w-50 overflow-hidden">
+                <img
+                  src="undraw_newsletter-subscriber_plsr.svg"
+                  alt=""
+                  className="w-full object-cover"
+                />
+              </div>
+
+              <div className="mt-20 space-y-3 text-center">
+                <h3 className="font-bold text-[24px]">There is nothing here</h3>
+                <p className="w-[193px] text-xs text-(--text-secondary) m-auto">
+                  Create an invoice by clicking the New Invoice button and get
+                  started
+                </p>
+              </div>
+            </div>
+          )}
           {invoices.map((invoice) => (
             <InvoiceCard
               key={invoice.id}
