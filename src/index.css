@@ -13,6 +13,7 @@
   --button-secondary: #F9FAFE;
   --button-secondary-hover: #DFE3FA;
   --text-secondary: #888EB0;
+  --bg-card: #FFF;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -24,8 +25,11 @@
 [data-theme="dark"] {
   --bg-primary: #141625;
   --text-primary: #FFF;
-    --button-secondary: #252945;
+  --button-secondary: #252945;
   --button-secondary-hover: #FFFFFF;
+  --bg-card: #1E2139;
+  /* --shadow-card: #48549F1A; */
+
 }
 
 #root {

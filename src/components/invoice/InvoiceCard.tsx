@@ -20,7 +20,7 @@ const InvoiceCard = ({
   return (
     <div
       onClick={onClick}
-      className="flex justify-between bg-white px-[32px] items-center w-full h-[72px] rounded-[8px] mt-5 shadow-card cursor-pointer
+      className="flex justify-between bg-(--bg-card) px-[32px] items-center w-full h-[72px] rounded-[8px] mt-5 shadow-card cursor-pointer
 "
     >
       <div className="flex gap-10 items-center">
@@ -36,10 +36,10 @@ const InvoiceCard = ({
         <div
           className={`px-[8px] py-[4px] w-[104px] h-[40px] text-center text-[15px] font-bold flex justify-center items-center gap-2 capitalize ${
             status === "paid"
-              ? "bg-green-100 text-green-500"
+              ? "bg-[#33d6a0]/[5.71%] text-[#33D69F]"
               : status === "pending"
-                ? "bg-yellow-100 text-yellow-500"
-                : "bg-red-100 text-red-500"
+                ? "bg-[#FF8F00]/[5.71%] text-[#FF8F00]"
+                : "bg-[#373B53]/[5.71%] text-[#373B53]"
           }`}
         >
           <div
@@ -48,7 +48,7 @@ const InvoiceCard = ({
           {status}
         </div>
         <div>
-          <ChevronRight className="w-4 h-4" />
+          <ChevronRight className="w-4 h-4 text-(--bg-accent)" />
         </div>
       </div>
     </div>
