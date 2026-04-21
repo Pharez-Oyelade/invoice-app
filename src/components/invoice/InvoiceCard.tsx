@@ -24,15 +24,15 @@ const InvoiceCard = ({
 "
     >
       <div className="flex gap-10 items-center">
-        <h2 className="font-bold text-[15px] ">
+        <h3 className="font-bold text-[15px] ">
           <span className="text-[#ccc]">#</span> {id}
-        </h2>
+        </h3>
         <p className="text-[13px] text-[#858BB2]">Due {date}</p>
         <p className="text-[13px] text-[#858BB2]">{name}</p>
       </div>
 
       <div className="flex gap-10 items-center">
-        <h2 className="font-bold text-[15px]">${total.toFixed(2)}</h2>
+        <h3 className="font-bold text-[15px]">${total.toFixed(2)}</h3>
         <div
           className={`px-[8px] py-[4px] w-[104px] h-[40px] text-center text-[15px] font-bold flex justify-center items-center gap-2 capitalize ${
             status === "paid"
