@@ -18,7 +18,7 @@ const InvoiceListPage = () => {
 
   return (
     <main className="bg-(--bg-primary) w-full flex flex-col justify-center items-center relative min-h-screen">
-      <div className=" mt-[77px] w-[75%] m-auto">
+      <div className="mt-[77px] w-[75%] m-auto">
         <header className="flex justify-between items-center w-full">
           <div className="space-y-3 flex items-start gap-0 flex-col">
             <h1 className="leading-[100%] tracking-[-1.13px] ">Invoices</h1>

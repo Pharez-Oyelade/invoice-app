@@ -43,7 +43,7 @@ const InvoiceCard = ({
           }`}
         >
           <div
-            className={`h-2 w-2 ${status === "paid" ? "bg-green-500" : status === "pending" ? "bg-yellow-500" : "bg-red-500"} rounded-full inline-block mr-2`}
+            className={`h-2 w-2 ${status === "paid" ? "bg-green-500" : status === "pending" ? "bg-yellow-500" : "bg-[#373B53]"} rounded-full inline-block mr-2`}
           />
           {status}
         </div>
