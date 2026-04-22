@@ -39,8 +39,8 @@ function formReducer(state: any, action: any) {
       const updated = state.items.map((item: any, i: number) => {
         if (i !== action.index) return item;
         const next = { ...item, [action.field]: action.value };
-        const qty = Number(next.quantity) || 0;
-        const price = Number(next.price) || 0;
+        const qty = Number(next.quantity) || 1;
+        const price = isNaN(Number(next.price)) ? 0 : Number(next.price);
         next.total = Number((qty * price).toFixed(2));
         return next;
       });
