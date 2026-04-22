@@ -4,7 +4,7 @@ import { useInvoices } from "../context/InvoiceContext";
 import InvoiceCard from "../components/invoice/InvoiceCard";
 import { useNavigate } from "react-router-dom";
 import InvoiceForm from "../components/invoice/InvoiceForm";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import Filter from "../components/ui/Filter";
 
 const InvoiceListPage = () => {
   const { invoices } = useInvoices();
@@ -12,37 +12,42 @@ const InvoiceListPage = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [filter, setFilter] = useState("all");
+  // const [selectedFilters, setSelectedFilters] = useState<
+  //   ("draft" | "pending" | "paid")[]
+  // >([]);
+  const [selectedFilters, setSelectedFilters] = useState("");
 
   const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
 
-  const toggleFilter = (status: string) => {
-    if (filter === status) {
-      setFilter("all");
+  const toggleFilter = (status: "draft" | "pending" | "paid") => {
+    // setSelectedFilters((prev) =>
+    //   prev.includes(status)
+    //     ? prev.filter((s) => s !== status)
+    //     : [...prev, status],
+    // );
+    if (selectedFilters === status) {
+      setSelectedFilters("");
     } else {
-      setFilter(status);
+      setSelectedFilters(status);
     }
   };
 
   const filteredInvoices = invoices.filter((invoice) => {
-    if (filter === "all") return true;
-    return invoice.status === filter;
+    if (selectedFilters.length === 0) return true;
+    return selectedFilters.includes(
+      invoice.status as "draft" | "pending" | "paid",
+    );
   });
-  // const [editingInvoice, setEditingInvoice] = useState(null);
-
-  // const OpenCreate = () => {setEditingInvoice(null); setIsOpen(true)}
-
-  // return if no invoices
 
   return (
-    <main className="bg-(--bg-primary) w-full relative min-h-screen pt-8">
+    <main className="bg-[var(--bg-primary)] w-full relative min-h-screen pt-8">
       <div className="mt-[24px] w-[90%] lg:w-[75%] mx-auto md:px-10">
         <header className="flex justify-between items-center w-full">
           <div className="space-y-3 flex items-start gap-0 flex-col w-full">
             <h1 className="text-3xl font-bold leading-[100%] tracking-[-1.13px]">
               Invoices
             </h1>
-            <p className="text-(--text-secondary) text-[13px] text-left w-full flex items-center gap-1">
+            <p className="text-[var(--text-secondary)] text-[13px] text-left w-full flex items-center gap-1">
               <span className="hidden md:block">There are</span>
               {invoices.length} <span className="hidden md:block">total</span>{" "}
               invoices
@@ -50,64 +55,12 @@ const InvoiceListPage = () => {
           </div>
 
           <div className="flex gap-5 items-center w-full justify-end">
-            <div className="relative cursor-pointer">
-              <div
-                onClick={toggleDropdown}
-                className="flex items-center group gap-1 font-bold"
-              >
-                Filter <span className="hidden md:block">by status</span>
-                {isDropdownOpen ? (
-                  <ChevronUp
-                    size={18}
-                    className="group-hover:text-(--text-form)"
-                  />
-                ) : (
-                  <ChevronDown
-                    size={18}
-                    className="group-hover:text-(--text-form)"
-                  />
-                )}
-              </div>
-              {isDropdownOpen && (
-                <div className="absolute top-full -right-5 flex flex-col gap-3 w-[192px] bg-(--bg-card) shadow-lg rounded-[8px] p-5 mt-5">
-                  <div className="w-full flex gap-5 items-center">
-                    <input
-                      type="checkbox"
-                      name=""
-                      id=""
-                      className="w-[16px] h-[16px] bg-(--button-secondary)"
-                      checked={filter === "draft"}
-                      onChange={() => toggleFilter("draft")}
-                    />
-                    <label htmlFor="">Draft</label>
-                  </div>
-
-                  <div className="w-full flex gap-5 items-center">
-                    <input
-                      type="checkbox"
-                      name=""
-                      id=""
-                      className="w-[16px] h-[16px] bg-(--button-secondary)"
-                      checked={filter === "pending"}
-                      onChange={() => toggleFilter("pending")}
-                    />
-                    <label htmlFor="">Pending</label>
-                  </div>
-
-                  <div className="w-full flex gap-5 items-center">
-                    <input
-                      type="checkbox"
-                      name=""
-                      id=""
-                      className="w-[16px] h-[16px] bg-(--button-secondary)"
-                      checked={filter === "paid"}
-                      onChange={() => toggleFilter("paid")}
-                    />
-                    <label htmlFor="">Paid</label>
-                  </div>
-                </div>
-              )}
-            </div>
+            <Filter
+              onClick={toggleDropdown}
+              isDropdownOpen={isDropdownOpen}
+              selectedFilters={selectedFilters}
+              toggleFilter={toggleFilter}
+            />
             <Button
               variant="primary"
               text="New"
@@ -133,7 +86,7 @@ const InvoiceListPage = () => {
                   <h3 className="font-bold text-[24px]">
                     There is nothing here
                   </h3>
-                  <p className="w-[193px] text-xs text-(--text-secondary) m-auto">
+                  <p className="w-[193px] text-xs text-[var(--text-secondary)] m-auto">
                     Create an invoice by clicking the New Invoice button and get
                     started
                   </p>
