@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useInvoices } from "../context/InvoiceContext";
 import { ChevronLeft } from "lucide-react";
@@ -29,6 +29,23 @@ const InvoiceDetailPage = () => {
     setIsDeleteOpen(false);
     navigate(-1);
   };
+
+  // close modal with esc key
+  useEffect(() => {
+    if (!isDeleteOpen) return;
+
+    const handleKeyDown = (e: any) => {
+      if (e.key === "Escape") {
+        setIsDeleteOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isDeleteOpen]);
 
   return (
     <main className="bg-(--bg-primary) w-full flex flex-col justify-center items-center relative min-h-screen">
@@ -297,7 +314,7 @@ const InvoiceDetailPage = () => {
       )}
 
       {isDeleteOpen && (
-        <div className="absolute left-0 top-0 h-full w-full z-50 bg-black/10 backdrop-blur-xs flex justify-center items-center">
+        <div className="fixed inset-0 z-50 bg-black/10 backdrop-blur-xs flex justify-center items-center">
           <div className="bg-(--bg-card) p-10 rounded-[8px] shadow-card w-[480px] text-left space-y-5">
             <h2>Confirm Deletion</h2>
             <span>
