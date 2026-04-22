@@ -5,7 +5,7 @@ import { Moon, Sun } from "lucide-react";
 const Sidebar = () => {
   const { toggleTheme, theme } = useInvoices();
   return (
-    <div className="sidebar">
+    <div className="sidebar z-999 overflow-hidden">
       {/* logo */}
       <div className="logo">Logo</div>
 

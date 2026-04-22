@@ -79,13 +79,7 @@ const InvoiceListPage = () => {
       </div>
 
       {isOpen && (
-        <div className="absolute left-0 top-0 h-full w-full z-50 backdrop-blur-sm">
-          {/* <div className="bg-(--bg-drawer) h-full w-[40%] rounded-tr-[20px] rounded-br-[20px] pt-[59px] text-left px-[48px]">
-            <h2 className="font-bold text-[12px]">New Invoice</h2>
-          </div> */}
-
-          <InvoiceForm isOpen={isOpen} onClose={() => setIsOpen(false)} />
-        </div>
+        <InvoiceForm isOpen={isOpen} onClose={() => setIsOpen(false)} />
       )}
     </main>
   );

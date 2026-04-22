@@ -289,13 +289,11 @@ const InvoiceDetailPage = () => {
       </div>
 
       {isOpen && (
-        <div className="absolute left-0 top-0 h-full w-full z-50 backdrop-blur-sm">
-          <InvoiceForm
-            isOpen={isOpen}
-            onClose={() => setIsOpen(false)}
-            invoiceToEdit={editingInvoice}
-          />
-        </div>
+        <InvoiceForm
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          invoiceToEdit={editingInvoice}
+        />
       )}
 
       {isDeleteOpen && (

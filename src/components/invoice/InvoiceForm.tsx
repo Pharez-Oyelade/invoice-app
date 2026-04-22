@@ -116,7 +116,7 @@ export default function InvoiceForm({
 
       {/* Drawer */}
       <aside
-        className={`fixed left-0 top-0 h-screen w-[719px] bg-(--bg-drawer) shadow-xl transform transition-transform duration-300 text-left ease-in-out z-50 flex flex-col rounded-tr-[20px] rounded-br-[20px] no-scrollbar ${
+        className={`fixed left-0 top-0 h-dvh w-full lg:w-[719px] bg-(--bg-drawer) shadow-xl transform transition-transform duration-300 text-left ease-in-out z-50 flex flex-col rounded-tr-[20px] rounded-br-[20px] pt-10 md:pt-0 md:pl-20 no-scrollbar ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
         aria-label={isEditing ? "Edit Invoice" : "New Invoice"}
@@ -139,7 +139,7 @@ export default function InvoiceForm({
           </div>
 
           {/* Content */}
-          <div className="flex-1 overflow-y-auto px-12 py-8 space-y-8">
+          <div className="flex-1 overflow-y-auto px-8 md:px-12 py-8 space-y-8">
             {/* ── Bill From ── */}
             <div>
               <h3 className="text-sm font-bold text-purple-600 mb-6">
