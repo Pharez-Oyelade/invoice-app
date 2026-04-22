@@ -5,7 +5,7 @@ import Sidebar from "./components/layout/Sidebar";
 
 const App = () => {
   return (
-    <div className="flex">
+    <div className="flex flex-col lg:flex-row min-h-screen">
       <Sidebar />
       <Routes>
         <Route path="/" element={<InvoiceListPage />} />

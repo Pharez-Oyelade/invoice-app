@@ -2,7 +2,7 @@ import { Plus } from "lucide-react";
 
 const BUTTON_VARIANTS = {
   primary:
-    "bg-(--button-primary) text-white text-[15px] leading[-0.25] hover:bg-(--button-primary-hover) w-[150px] h-[48px] rounded-[24px] flex items-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-(--button-primary)",
+    "bg-(--button-primary) text-white text-[15px] leading[-0.25] hover:bg-(--button-primary-hover) w-[95px] md:w-[150px] h-[48px] rounded-[24px] flex items-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-(--button-primary)",
   secondary:
     "bg-(--button-primary) text-white text-[15px] hover:bg-(--button-primary-hover) w-[131px] h-[48px] rounded-[24px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-(--button-primary)",
   edit: "bg-(--button-secondary) text-(--text-form) text-[15px] hover:bg-(--button-secondary-hover) w-[73px] px-10 h-[48px] rounded-[24px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-(--button-secondary)",
@@ -16,11 +16,13 @@ const BUTTON_VARIANTS = {
 const Button = ({
   variant,
   text,
+  fullText,
   onClick,
   disabled,
 }: {
   variant: keyof typeof BUTTON_VARIANTS;
   text: string;
+  fullText?: string;
   onClick?: () => void;
   disabled?: boolean;
 }) => {
@@ -38,7 +40,7 @@ const Button = ({
           <div className="bg-white text-(--button-primary) w-[32px] h-[32px] rounded-full ml-[8px]">
             <Plus className="m-auto h-[20px] w-[20px] mt-[6px] " />
           </div>
-          {text}
+          {text} <span className="hidden md:block">{fullText}</span>
         </button>
       )}
       {variant !== "primary" && (

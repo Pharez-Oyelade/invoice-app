@@ -32,7 +32,7 @@ const InvoiceDetailPage = () => {
 
   return (
     <main className="bg-(--bg-primary) w-full flex flex-col justify-center items-center relative min-h-screen">
-      <div className="mt-[70px] w-[75%] m-auto">
+      <div className="mt-[24px] lg:mt-[50px] w-[90%] lg:w-[75%] mb-[70px] m-auto">
         {/* back */}
 
         <div className="text-left">
@@ -50,7 +50,7 @@ const InvoiceDetailPage = () => {
           <div className="flex items-center gap-5">
             <span>Status</span>
             <div
-              className={`px-[8px] py-[4px] w-[104px] h-[40px] text-center text-[15px] font-bold flex justify-center items-center gap-2 capitalize ${
+              className={`px-[8px] py-[4px] w-[104px] h-[40px] text-center text-[15px] font-bold md:flex justify-center items-center gap-2 capitalize hidden ${
                 invoice?.status === "paid"
                   ? "bg-[#33d6a0]/[5.71%] text-[#33D69F]"
                   : invoice?.status === "pending"
@@ -65,8 +65,23 @@ const InvoiceDetailPage = () => {
             </div>
           </div>
 
+          <div
+            className={`px-[8px] py-[4px] w-[104px] h-[40px] text-center text-[15px] font-bold flex justify-center items-center gap-2 capitalize md:hidden ${
+              invoice?.status === "paid"
+                ? "bg-[#33d6a0]/[5.71%] text-[#33D69F]"
+                : invoice?.status === "pending"
+                  ? "bg-[#FF8F00]/[5.71%] text-[#FF8F00]"
+                  : "bg-[#373B53]/[5.71%] text-[#373B53]"
+            }`}
+          >
+            <div
+              className={`h-2 w-2 ${invoice?.status === "paid" ? "bg-green-500" : invoice?.status === "pending" ? "bg-yellow-500" : "bg-[#373B53]"} rounded-full inline-block mr-2`}
+            />
+            {invoice?.status}
+          </div>
+
           {/* Action Buttons */}
-          <div className="flex gap-4">
+          <div className="md:flex gap-4 hidden">
             <Button
               variant="edit"
               text="Edit"
@@ -89,8 +104,8 @@ const InvoiceDetailPage = () => {
         {/* Detail Card */}
         <div className="bg-(--bg-card) shadow-card rounded-[8px] p-10">
           {/* header */}
-          <div className="flex justify-between w-full">
-            <div className="space-y-3 text-left">
+          <div className="flex flex-col md:flex-row gap-10 justify-between w-full">
+            <div className="md:space-y-3 text-left">
               <h3 className="font-extrabold text-[15px]">
                 <span className="text-[#ccc]">#</span>
                 {invoice?.id}
@@ -100,7 +115,7 @@ const InvoiceDetailPage = () => {
               </p>
             </div>
 
-            <p className="text-[13px] text-(--text-form) text-right">
+            <p className="text-[13px] text-(--text-form) text-left md:text-right">
               {invoice?.senderAddress.street} <br />
               {invoice?.senderAddress.city} <br />
               {invoice?.senderAddress.postCode} <br />
@@ -109,7 +124,7 @@ const InvoiceDetailPage = () => {
           </div>
 
           {/* details */}
-          <div className="grid grid-cols-4 gap-10 text-left my-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-left my-6">
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-4">
                 <span className="text-[13px] text-(--text-form)">
@@ -156,23 +171,33 @@ const InvoiceDetailPage = () => {
             </div>
           </div>
 
-          {/* Items */}
+          {/* Items
           <div className="bg-(--button-secondary) grid grid-cols-8 p-10 rounded-tl-[8px] rounded-tr-[8px] mt-10">
             <div className="flex flex-col gap-5 col-span-3 text-left">
-              <span className="text-[13px] text-(--text-form)">Item Name</span>
+              <span className="text-[13px] text-(--text-form) hidden md:block">
+                Item Name
+              </span>
               {invoice?.items.map((item: any, index: number) => (
-                <h3 key={index} className="font-bold text-[15px]">
-                  {item.name}
-                </h3>
+                <div key={index}>
+                  <h3 className="font-bold text-[15px]">{item.name}</h3>
+                  <span
+                    key={index}
+                    className="font-bold text-[15px] text-(--text-form) md:hidden"
+                  >
+                    {item.quantity} x {formatCurrency(item.price)}
+                  </span>
+                </div>
               ))}
             </div>
 
             <div className="flex flex-col gap-5 text-right">
-              <span className="text-[13px] text-(--text-form)">Qty</span>
+              <span className="text-[13px] text-(--text-form) hidden md:block">
+                Qty
+              </span>
               {invoice?.items.map((item: any, index: number) => (
                 <span
                   key={index}
-                  className="font-bold text-[15px] text-(--text-form)"
+                  className="font-bold text-[15px] text-(--text-form) hidden md:block"
                 >
                   {item.quantity}
                 </span>
@@ -180,11 +205,13 @@ const InvoiceDetailPage = () => {
             </div>
 
             <div className="flex flex-col gap-5 col-span-2 text-right">
-              <span className="text-[13px] text-(--text-form)">Price</span>
+              <span className="text-[13px] text-(--text-form) hidden md:block">
+                Price
+              </span>
               {invoice?.items.map((item: any, index: number) => (
                 <span
                   key={index}
-                  className="font-bold text-[15px] text-(--text-form)"
+                  className="font-bold text-[15px] text-(--text-form) hidden md:block"
                 >
                   {formatCurrency(item.price)}
                 </span>
@@ -192,13 +219,64 @@ const InvoiceDetailPage = () => {
             </div>
 
             <div className="flex flex-col gap-5 col-span-2 text-right">
-              <span className="text-[13px] text-(--text-form)">Total</span>
+              <span className="text-[13px] text-(--text-form) hidden md:block">
+                Total
+              </span>
               {invoice?.items.map((item: any, index: number) => (
                 <h3 key={index} className="font-bold text-[15px]">
                   {formatCurrency(item.price * item.quantity)}
                 </h3>
               ))}
             </div>
+          </div> */}
+
+          {/* Items */}
+          <div className="bg-(--button-secondary) p-10 rounded-tl-[8px] rounded-tr-[8px] mt-10">
+            <div className="hidden md:grid grid-cols-8 mb-5">
+              <span className="col-span-3 text-[13px] text-(--text-form) text-left">
+                Item Name
+              </span>
+              <span className="col-span-1 text-[13px] text-(--text-form) text-right">
+                Qty
+              </span>
+              <span className="col-span-2 text-[13px] text-(--text-form) text-right">
+                Price
+              </span>
+              <span className="col-span-2 text-[13px] text-(--text-form) text-right">
+                Total
+              </span>
+            </div>
+
+            {invoice?.items.map((item: any, index: number) => (
+              <div
+                key={index}
+                className="flex justify-between items-start md:grid md:grid-cols-8 mb-5 last:mb-0"
+              >
+                {/* Name + qty×price subtitle */}
+                <div className="md:col-span-3 text-left">
+                  <h3 className="font-bold text-[15px] text-left">
+                    {item.name}
+                  </h3>
+                  <span className="font-bold text-[15px] text-(--bg-accent) md:hidden text-left">
+                    {item.quantity} x {formatCurrency(item.price)}
+                  </span>
+                </div>
+
+                {/* Qty desktop only */}
+                <span className="hidden md:block md:col-span-1 font-bold text-[15px] text-(--text-form) text-right">
+                  {item.quantity}
+                </span>
+
+                {/* Unit price desktop only */}
+                <span className="hidden md:block md:col-span-2 font-bold text-[15px] text-(--text-form) text-right">
+                  {formatCurrency(item.price)}
+                </span>
+
+                <h3 className="font-bold text-[15px] md:col-span-2 text-right">
+                  {formatCurrency(item.price * item.quantity)}
+                </h3>
+              </div>
+            ))}
           </div>
 
           <div className="bg-(--bg-footer) h-[80px] rounded-br-[8px] rounded-bl-[8px] flex justify-between items-center px-10">
@@ -244,6 +322,24 @@ const InvoiceDetailPage = () => {
           </div>
         </div>
       )}
+      <div className="md:hidden flex gap-4 items-center fixed bottom-0 left-0 w-full bg-(--bg-card) p-5 shadow-card justify-center">
+        <Button
+          variant="edit"
+          text="Edit"
+          onClick={openEdit.bind(null, invoice)}
+        />
+        <Button
+          variant="delete"
+          text="Delete"
+          onClick={() => setIsDeleteOpen(true)}
+        />
+        <Button
+          variant="secondary"
+          text="Mark as Paid"
+          onClick={() => invoice?.id && markAsPaid(invoice.id)}
+          disabled={invoice?.status === "paid"}
+        />
+      </div>
     </main>
   );
 };
