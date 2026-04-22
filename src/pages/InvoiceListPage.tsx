@@ -118,25 +118,28 @@ const InvoiceListPage = () => {
         </header>
 
         <section className="w-full mt-12 space-y-4">
-          {invoices.length === 0 && (
-            <div className="flex flex-col justify-center items-center w-full m-auto">
-              <div className="w-50 overflow-hidden">
-                <img
-                  src="undraw_newsletter-subscriber_plsr.svg"
-                  alt=""
-                  className="w-full object-cover"
-                />
-              </div>
+          {invoices.length === 0 ||
+            (filteredInvoices.length === 0 && (
+              <div className="flex flex-col justify-center items-center w-full m-auto">
+                <div className="w-50 overflow-hidden">
+                  <img
+                    src="undraw_newsletter-subscriber_plsr.svg"
+                    alt=""
+                    className="w-full object-cover"
+                  />
+                </div>
 
-              <div className="mt-20 space-y-3 text-center">
-                <h3 className="font-bold text-[24px]">There is nothing here</h3>
-                <p className="w-[193px] text-xs text-(--text-secondary) m-auto">
-                  Create an invoice by clicking the New Invoice button and get
-                  started
-                </p>
+                <div className="mt-20 space-y-3 text-center">
+                  <h3 className="font-bold text-[24px]">
+                    There is nothing here
+                  </h3>
+                  <p className="w-[193px] text-xs text-(--text-secondary) m-auto">
+                    Create an invoice by clicking the New Invoice button and get
+                    started
+                  </p>
+                </div>
               </div>
-            </div>
-          )}
+            ))}
           {filteredInvoices.map((invoice) => (
             <InvoiceCard
               key={invoice.id}
