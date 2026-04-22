@@ -20,7 +20,7 @@ const InvoiceCard = ({
   return (
     <div
       onClick={onClick}
-      className="flex justify-between bg-(--bg-card) px-[32px] items-center w-full h-[72px] rounded-[8px] mt-5 shadow-card cursor-pointer
+      className="flex justify-between bg-(--bg-card) border border-transparent hover:border-(--bg-accent) transition-colors duration-300 px-[32px] items-center w-full h-[72px] rounded-[8px] mt-5 shadow-card cursor-pointer
 "
     >
       <div className="flex gap-10 items-center">
