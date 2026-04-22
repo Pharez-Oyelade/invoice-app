@@ -179,8 +179,8 @@ code {
 .logo {
   width: 103px;
   /* height: 103px; */
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   background-color: var(--bg-accent);
   display: flex;
   justify-content: center;
@@ -188,7 +188,7 @@ code {
   flex-shrink: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .logo {
     height: 103px;
     border-top-right-radius: 20px;
