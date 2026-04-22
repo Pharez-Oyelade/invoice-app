@@ -143,7 +143,7 @@ export default function InvoiceForm({
       >
         <div className="flex flex-col h-full">
           {/* Header */}
-          <div className="text-left pt-16">
+          <div className="text-left pt-16 lg:pt-10">
             <button
               onClick={handleDiscard}
               className="text-[15px] font-bold px-12 flex gap-2 items-center cursor-pointer hover:text-(--text-form) transition-colors duration-300 md:hidden"
@@ -152,7 +152,7 @@ export default function InvoiceForm({
               Go back
             </button>
           </div>
-          <div className="px-12 pt-10 md:pt-16 pb-8 text-left">
+          <div className="px-12 pt-10 pb-8 text-left">
             <h2 className="font-bold">
               {isEditing ? (
                 <>
