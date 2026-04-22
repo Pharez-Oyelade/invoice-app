@@ -7,7 +7,7 @@ const BUTTON_VARIANTS = {
     "bg-(--button-primary) text-white text-[15px] hover:bg-(--button-primary-hover) w-[131px] h-[48px] rounded-[24px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-(--button-primary)",
   edit: "bg-(--button-secondary) text-(--text-form) text-[15px] hover:bg-(--button-secondary-hover) w-[73px] px-10 h-[48px] rounded-[24px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-(--button-secondary)",
   delete:
-    "bg-red-500 text-white hover:bg-red-600 w-[89px] text-[15px] h-[48px] rounded-[24px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-red-500",
+    "bg-[#EC5757] text-white hover:bg-[#FF9797] w-[89px] text-[15px] h-[48px] rounded-[24px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-red-500",
   form: "bg-[#F9FAFE] text-(--text-form) text-[15px] hover:bg-[#DFE3FA] w-full h-[48px] rounded-[24px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#F9FAFE]",
   draft:
     "text-(--text-form) bg-(--button-draft) hover:bg-(--button-draft-hover) w-[133px] text-[15px] h-[48px] rounded-[24px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-(--button-draft)",

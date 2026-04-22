@@ -38,7 +38,7 @@ const InvoiceDetailPage = () => {
         <div className="text-left">
           <button
             onClick={() => navigate(-1)}
-            className="text-[15px] font-bold flex gap-2 items-center cursor-pointer"
+            className="text-[15px] font-bold flex gap-2 items-center cursor-pointer hover:text-(--text-form) transition-colors duration-300"
           >
             <ChevronLeft className="w-4 h-4" />
             Go back
