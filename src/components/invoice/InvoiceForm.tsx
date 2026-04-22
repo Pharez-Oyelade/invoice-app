@@ -50,6 +50,23 @@ export default function InvoiceForm({
     };
   }, [isOpen]);
 
+  // close modal with esc key
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e: any) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
+
   const handleDiscard = () => {
     reset();
     onClose();
