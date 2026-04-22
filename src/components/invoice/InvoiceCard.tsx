@@ -1,4 +1,5 @@
 import { ChevronRight } from "lucide-react";
+import { formatCurrency } from "../../utils/helpers";
 
 interface InvoiceCardProps {
   id: string;
@@ -42,12 +43,14 @@ const InvoiceCard = ({
         <p className="text-[13px] text-left text-[#858BB2] md:hidden">
           Due {date}
         </p>
-        <h3 className="font-bold text-[15px] text-left">${total.toFixed(2)}</h3>
+        <h3 className="font-bold text-[15px] text-left">
+          {formatCurrency(total)}
+        </h3>
       </div>
 
       <div className="flex gap-4 items-center justify-end">
         <h3 className="font-bold hidden md:block text-[15px]">
-          ${total.toFixed(2)}
+          {formatCurrency(total)}
         </h3>
         <div
           className={`px-[8px] py-[4px] w-[104px] h-[40px] text-center text-[15px] font-bold flex justify-center items-center gap-2 capitalize rounded-[6px] ${
