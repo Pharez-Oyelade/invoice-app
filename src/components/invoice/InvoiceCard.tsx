@@ -20,7 +20,7 @@ const InvoiceCard = ({
   return (
     <div
       onClick={onClick}
-      className="bg-(--bg-card) border border-transparent hover:border-(--bg-accent) transition-colors duration-300 px-6 py-4 md:px-8 w-full rounded-[8px] shadow-card cursor-pointer
+      className="bg-(--bg-card) border border-transparent hover:border-(--bg-accent) px-6 py-4 md:px-8 w-full rounded-[8px] shadow-card cursor-pointer
         grid grid-cols-[1fr_auto] grid-rows-2 gap-y-3 items-center
         md:flex md:flex-row md:justify-between md:items-center md:h-[72px] md:gap-0"
     >
