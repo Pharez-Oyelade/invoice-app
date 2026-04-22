@@ -62,7 +62,7 @@ export default function InvoiceItems({
                 placeholder="Item name"
                 value={item.name}
                 onChange={(e) => onUpdate(index, "name", e.target.value)}
-                className={`w-full px-4 py-3 rounded bg-(--bg-input) border border-(--border-input) text-(--text-primary) placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm ${
+                className={`w-full px-1 md:px-4 py-3 rounded bg-(--bg-input) border border-(--border-input) text-(--text-primary) placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm ${
                   errors[`item_${index}_name`] ? "border-red-500" : ""
                 }`}
                 aria-label="Item name"
@@ -87,7 +87,7 @@ export default function InvoiceItems({
                     Math.max(1, parseInt(e.target.value) || 1),
                   )
                 }
-                className={`w-full px-4 py-3 rounded bg-(--bg-input) border border-(--border-input) text-(--text-primary) placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm ${
+                className={`w-full px-1 md:px-4 py-3 rounded bg-(--bg-input) border border-(--border-input) text-(--text-primary) placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm ${
                   errors[`item_${index}_qty`] ? "border-red-500" : ""
                 }`}
                 aria-label="Quantity"
@@ -108,7 +108,7 @@ export default function InvoiceItems({
                   const val = e.target.valueAsNumber;
                   if (!isNaN(val) && val >= 0) onUpdate(index, "price", val);
                 }}
-                className={`w-full px-4 py-3 rounded bg-(--bg-input) border border-(--border-input) text-(--text-primary) placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm ${
+                className={`w-full px-1 md:px-4 py-3 rounded bg-(--bg-input) border border-(--border-input) text-(--text-primary) placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm ${
                   errors[`item_${index}_price`] ? "border-red-500" : ""
                 }`}
                 aria-label="Price"
