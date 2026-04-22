@@ -6,6 +6,7 @@ import { generateId, addDays } from "../../utils/helpers";
 import AddressFields from "./AddressFields";
 import InvoiceItems from "./InvoiceItems";
 import Button from "../ui/Button";
+import { ChevronLeft } from "lucide-react";
 
 interface InvoiceFormProps {
   isOpen: boolean;
@@ -125,12 +126,20 @@ export default function InvoiceForm({
       >
         <div className="flex flex-col h-full">
           {/* Header */}
-          <div className="px-12 pt-16 pb-8 text-left">
+          <div className="text-left">
+            <button
+              onClick={handleDiscard}
+              className="text-[15px] font-bold pt-16 px-12 flex gap-2 items-center cursor-pointer hover:text-(--text-form) transition-colors duration-300"
+            >
+              <ChevronLeft className="w-4 h-4" />
+              Go back
+            </button>
+          </div>
+          <div className="px-12 pt-10 md:pt-16 pb-8 text-left">
             <h2 className="font-bold">
               {isEditing ? (
                 <>
-                  Edit{" "}
-                  <span className="text-purple-600">#{invoiceToEdit?.id}</span>
+                  Edit <span className="">#{invoiceToEdit?.id}</span>
                 </>
               ) : (
                 "New Invoice"
