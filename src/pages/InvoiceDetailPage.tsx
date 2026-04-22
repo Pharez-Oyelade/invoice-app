@@ -1,15 +1,26 @@
+import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useInvoices } from "../context/InvoiceContext";
 import { ChevronLeft } from "lucide-react";
 import Button from "../components/ui/Button";
 import { formatCurrency } from "../utils/helpers";
+import InvoiceForm from "../components/invoice/InvoiceForm";
 
 const InvoiceDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { invoices } = useInvoices();
+  const { invoices, markAsPaid } = useInvoices();
   const invoice = invoices.find((i) => i.id === id);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [editingInvoice, setEditingInvoice] = useState(null);
+
+  const openEdit = (invoice: any) => {
+    setEditingInvoice(invoice);
+    setIsOpen(true);
+  };
+
   return (
     <main className="bg-(--bg-primary) w-full flex flex-col justify-center items-center relative min-h-screen">
       <div className="mt-[70px] w-[75%] m-auto">
@@ -47,9 +58,18 @@ const InvoiceDetailPage = () => {
 
           {/* Action Buttons */}
           <div className="flex gap-4">
-            <Button variant="edit" text="Edit" />
+            <Button
+              variant="edit"
+              text="Edit"
+              onClick={openEdit.bind(null, invoice)}
+            />
             <Button variant="delete" text="Delete" />
-            <Button variant="secondary" text="Mark as Paid" />
+            <Button
+              variant="secondary"
+              text="Mark as Paid"
+              onClick={() => invoice?.id && markAsPaid(invoice.id)}
+              disabled={invoice?.status === "paid"}
+            />
           </div>
         </div>
 
@@ -176,6 +196,20 @@ const InvoiceDetailPage = () => {
           </div>
         </div>
       </div>
+
+      {isOpen && (
+        <div className="absolute left-0 top-0 h-full w-full z-50 backdrop-blur-sm">
+          {/* <div className="bg-(--bg-drawer) h-full w-[40%] rounded-tr-[20px] rounded-br-[20px] pt-[59px] text-left px-[48px]">
+                  <h2 className="font-bold text-[12px]">New Invoice</h2>
+                </div> */}
+
+          <InvoiceForm
+            isOpen={isOpen}
+            onClose={() => setIsOpen(false)}
+            invoiceToEdit={editingInvoice}
+          />
+        </div>
+      )}
     </main>
   );
 };
