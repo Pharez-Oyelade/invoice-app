@@ -316,15 +316,22 @@ export default function InvoiceForm({
 
           {/* ── Action Bar ── */}
           <div className="px-12 py-6 flex justify-between items-center gap-4">
-            <Button variant="edit" onClick={handleDiscard} text="Discard" />
+            {/* <Button variant="edit" onClick={handleDiscard} text="Discard" /> */}
+            {!isEditing ? (
+              <Button variant="edit" onClick={handleDiscard} text="Discard" />
+            ) : (
+              <div></div>
+            )}
 
             <div className="flex gap-3">
-              {!isEditing && (
+              {!isEditing ? (
                 <Button
                   variant="draft"
                   onClick={handleSaveDraft}
                   text="Save as Draft"
                 />
+              ) : (
+                <Button variant="edit" onClick={handleDiscard} text="Cancel" />
               )}
               <Button
                 variant="secondary"
