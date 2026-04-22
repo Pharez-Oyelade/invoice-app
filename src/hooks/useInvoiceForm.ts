@@ -57,7 +57,14 @@ function formReducer(state: any, action: any) {
       return defaultForm();
 
     case "LOAD":
-      return { ...action.invoice };
+      return {
+        ...action.invoice,
+        items: action.invoice.items.map((item: any) => ({
+          ...item,
+          id: item.id ?? generateId(),
+          total: Number(item.quantity || 0) * Number(item.price || 0),
+        })),
+      };
 
     default:
       return state;
