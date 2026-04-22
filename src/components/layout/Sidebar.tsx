@@ -1,4 +1,3 @@
-import React from "react";
 import { useInvoices } from "../../context/InvoiceContext";
 import { Moon, Sun } from "lucide-react";
 

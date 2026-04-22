@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { formatCurrency } from "../../utils/helpers";
 import { Trash2 } from "lucide-react";
 import Button from "../ui/Button";
