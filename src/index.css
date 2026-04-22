@@ -46,15 +46,22 @@
 }
 
 #root {
-  width: calc(100% - 103px);
+  width: 100%;
   max-width: 100%;
-  margin-left: 103px;
   text-align: center;
   border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  #root {
+    max-width: calc(100% - 103px);
+    /* max-width: 100%; */
+    margin-left: 103px;
+  }
 }
 
 * {
@@ -83,7 +90,7 @@ h1 {
   letter-spacing: -1.68px;
   /* margin: 32px 0; */
   @media (max-width: 1024px) {
-    font-size: 36px;
+    font-size: 24px;
     margin: 20px 0;
   }
 }
@@ -122,37 +129,70 @@ code {
 
 /* sidebar */
 .sidebar {
-  width: 103px;
+  width: 100%;
+  height: 72px;
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
-  /* align-items: center; */
-  /* height: 100%; */
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100svh;
+  flex-direction: row;
   background-color: var(--bg-sidebar);
   color: white;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
 
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+@media (min-width: 768px) {
+  .sidebar {
+    height: 80px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sidebar {
+    width: 103px;
+    height: 100svh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    flex-direction: column;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
 }
 
 .sidebar-actions {
-  padding-bottom: 17%;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  padding-right: 8%;
+}
+
+@media (min-width: 1024px) {
+  .sidebar-actions {
+    padding-bottom: 17%;
+    padding-right: 0;
+    flex-direction: column;
+  }
 }
 
 .logo {
   width: 103px;
   height: 103px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
   background-color: var(--bg-accent);
-
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .logo {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
 }
 
 .line-break {

@@ -5,7 +5,7 @@ import { Moon, Sun } from "lucide-react";
 const Sidebar = () => {
   const { toggleTheme, theme } = useInvoices();
   return (
-    <div className="sidebar">
+    <div className="sidebar z-999 overflow-hidden">
       {/* logo */}
       <div className="logo">Logo</div>
 
@@ -16,10 +16,10 @@ const Sidebar = () => {
           className="cursor-pointer"
           aria-label="Toggle Theme"
         >
-          {theme === "light" ? <Moon /> : <Sun />}
+          {theme === "light" ? <Moon size={24} /> : <Sun size={24} />}
         </button>
         <div className="line-break"></div>
-        <div className="w-12 h-12 rounded-full overflow-hidden flex justify-center items-center m-auto">
+        <div className="w-10 h-10 rounded-full overflow-hidden flex justify-center items-center m-auto shrink-0">
           <img
             src="./pharez_avatar.jpg"
             alt="User Avatar"

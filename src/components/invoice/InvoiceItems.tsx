@@ -52,7 +52,7 @@ export default function InvoiceItems({
 
       <div className="space-y-4">
         {items.map((item: any, index: number) => (
-          <div key={item.id} className="grid grid-cols-12 gap-4 items-end">
+          <div key={index} className="grid grid-cols-12 gap-4 items-end">
             {/* Name */}
             <div className="col-span-5">
               <input
