@@ -315,7 +315,7 @@ export default function InvoiceForm({
           </div>
 
           {/* ── Action Bar ── */}
-          <div className="px-8 md:px-12 py-6 flex justify-between items-center gap-4">
+          <div className="px-4 md:px-12 py-6 flex justify-between items-center gap-2 md:gap-4">
             {/* <Button variant="edit" onClick={handleDiscard} text="Discard" /> */}
             {!isEditing ? (
               <Button variant="edit" onClick={handleDiscard} text="Discard" />
