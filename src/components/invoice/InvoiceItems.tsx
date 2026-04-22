@@ -51,9 +51,12 @@ export default function InvoiceItems({
 
       <div className="space-y-4">
         {items.map((item: any, index: number) => (
-          <div key={index} className="grid grid-cols-12 gap-4 items-end">
+          <div
+            key={index}
+            className="grid grid-cols-5 md:grid-cols-12 gap-4 items-center"
+          >
             {/* Name */}
-            <div className="col-span-5">
+            <div className="md:col-span-5">
               <input
                 type="text"
                 placeholder="Item name"
@@ -72,7 +75,7 @@ export default function InvoiceItems({
             </div>
 
             {/* Quantity */}
-            <div className="col-span-2">
+            <div className="md:col-span-2">
               <input
                 type="number"
                 min="1"
@@ -92,7 +95,7 @@ export default function InvoiceItems({
             </div>
 
             {/* Price */}
-            <div className="col-span-2">
+            <div className="md:col-span-2">
               <input
                 type="number"
                 min="0"
@@ -113,7 +116,7 @@ export default function InvoiceItems({
             </div>
 
             {/* Total (read-only) */}
-            <div className="col-span-2 text-right">
+            <div className="md:col-span-2 text-right">
               <span className="text-sm font-semibold text-gray-900 dark:text-white">
                 {formatCurrency(item.total)}
               </span>
