@@ -178,7 +178,7 @@ code {
 
 .logo {
   width: 103px;
-  height: 103px;
+  /* height: 103px; */
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   background-color: var(--bg-accent);
@@ -190,6 +190,7 @@ code {
 
 @media (min-width: 768px) {
   .logo {
+    height: 103px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
   }

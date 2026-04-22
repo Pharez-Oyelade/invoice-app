@@ -6,7 +6,9 @@ const Sidebar = () => {
   return (
     <div className="sidebar z-999 overflow-hidden">
       {/* logo */}
-      <div className="logo">Logo</div>
+      <div className="logo">
+        <img src="./logoipsum-409 (1).svg" alt="Logo" className="text-white" />
+      </div>
 
       {/* toggle/profile */}
       <div className="sidebar-actions">
