@@ -126,10 +126,10 @@ export default function InvoiceForm({
       >
         <div className="flex flex-col h-full">
           {/* Header */}
-          <div className="text-left">
+          <div className="text-left pt-16">
             <button
               onClick={handleDiscard}
-              className="text-[15px] font-bold pt-16 px-12 flex gap-2 items-center cursor-pointer hover:text-(--text-form) transition-colors duration-300"
+              className="text-[15px] font-bold px-12 flex gap-2 items-center cursor-pointer hover:text-(--text-form) transition-colors duration-300 md:hidden"
             >
               <ChevronLeft className="w-4 h-4" />
               Go back
