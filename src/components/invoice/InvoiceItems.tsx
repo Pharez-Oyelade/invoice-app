@@ -99,9 +99,13 @@ export default function InvoiceItems({
                 min="0"
                 step="0.01"
                 value={item.price}
-                onChange={(e) =>
-                  onUpdate(index, "price", parseFloat(e.target.value) || 0)
-                }
+                // onChange={(e) =>
+                //   onUpdate(index, "price", parseFloat(e.target.value) || 0)
+                // }
+                onChange={(e) => {
+                  const val = e.target.valueAsNumber;
+                  if (!isNaN(val) && val >= 0) onUpdate(index, "price", val);
+                }}
                 className={`w-full px-4 py-3 rounded bg-(--bg-input) border border-(--border-input) text-(--text-primary) placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm ${
                   errors[`item_${index}_price`] ? "border-red-500" : ""
                 }`}

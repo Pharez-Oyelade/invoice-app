@@ -20,6 +20,7 @@
   --border-input: #DFE3FA;
   --button-draft: #373B53;
   --button-draft-hover: #0C0E16;
+  --bg-footer: #373B53;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -39,6 +40,7 @@
   --bg-input: #1E2139;
   --border-input: #252945;
   --button-draft-hover: #1E2139;
+  --bg-footer: #0C0E16;
   /* --shadow-card: #48549F1A; */
 
 }
@@ -93,6 +95,10 @@ h2 {
   @media (max-width: 1024px) {
     font-size: 20px;
   }
+}
+
+h3 {
+  font-weight: 700;
 }
 p {
   margin: 0;
