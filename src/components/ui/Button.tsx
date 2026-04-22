@@ -4,13 +4,13 @@ const BUTTON_VARIANTS = {
   primary:
     "bg-(--button-primary) text-white text-[15px] leading[-0.25] hover:bg-(--button-primary-hover) w-[95px] md:w-[150px] h-[48px] rounded-[24px] flex items-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-(--button-primary)",
   secondary:
-    "bg-(--button-primary) text-white text-[15px] hover:bg-(--button-primary-hover) w-[131px] h-[48px] rounded-[24px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-(--button-primary)",
+    "bg-(--button-primary) text-white text-[13px] md:text-[15px] hover:bg-(--button-primary-hover) w-[95px] md:w-[131px] h-[45px] md:h-[48px] rounded-[24px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-(--button-primary)",
   edit: "bg-(--button-secondary) text-(--text-form) text-[15px] hover:bg-(--button-secondary-hover) w-[73px] px-10 h-[48px] rounded-[24px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-(--button-secondary)",
   delete:
     "bg-[#EC5757] text-white hover:bg-[#FF9797] w-[89px] text-[15px] h-[48px] rounded-[24px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-red-500",
   form: "bg-[#F9FAFE] text-(--text-form) text-[15px] hover:bg-[#DFE3FA] w-full h-[48px] rounded-[24px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#F9FAFE]",
   draft:
-    "text-(--text-form) bg-(--button-draft) hover:bg-(--button-draft-hover) w-[133px] text-[15px] h-[48px] rounded-[24px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-(--button-draft)",
+    "text-(--text-form) bg-(--button-draft) hover:bg-(--button-draft-hover) w-[95px] md:w-[133px] text-[13px] md:text-[15px] h-[48px] rounded-[24px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-(--button-draft)",
 };
 
 const Button = ({
