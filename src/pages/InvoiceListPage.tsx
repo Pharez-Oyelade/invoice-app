@@ -10,6 +10,23 @@ const InvoiceListPage = () => {
   const navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [filter, setFilter] = useState("all");
+
+  const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
+
+  const toggleFilter = (status: string) => {
+    if (filter === status) {
+      setFilter("all");
+    } else {
+      setFilter(status);
+    }
+  };
+
+  const filteredInvoices = invoices.filter((invoice) => {
+    if (filter === "all") return true;
+    return invoice.status === filter;
+  });
   // const [editingInvoice, setEditingInvoice] = useState(null);
 
   // const OpenCreate = () => {setEditingInvoice(null); setIsOpen(true)}
@@ -32,8 +49,49 @@ const InvoiceListPage = () => {
           </div>
 
           <div className="flex gap-5 items-center w-full justify-end">
-            <div className="flex gap-1">
-              Filter <span className="hidden md:block">by status</span>
+            <div className="relative cursor-pointer">
+              <div onClick={toggleDropdown} className="flex gap-1">
+                Filter <span className="hidden md:block">by status</span>
+              </div>
+              {isDropdownOpen && (
+                <div className="absolute top-full -right-5 flex flex-col gap-3 w-[192px] bg-(--bg-card) shadow-lg rounded-[8px] p-5 mt-5">
+                  <div className="w-full flex gap-5 items-center">
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      className="w-[16px] h-[16px] bg-(--button-secondary)"
+                      checked={filter === "draft"}
+                      onChange={() => toggleFilter("draft")}
+                    />
+                    <label htmlFor="">Draft</label>
+                  </div>
+
+                  <div className="w-full flex gap-5 items-center">
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      className="w-[16px] h-[16px] bg-(--button-secondary)"
+                      checked={filter === "pending"}
+                      onChange={() => toggleFilter("pending")}
+                    />
+                    <label htmlFor="">Pending</label>
+                  </div>
+
+                  <div className="w-full flex gap-5 items-center">
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      className="w-[16px] h-[16px] bg-(--button-secondary)"
+                      checked={filter === "paid"}
+                      onChange={() => toggleFilter("paid")}
+                    />
+                    <label htmlFor="">Paid</label>
+                  </div>
+                </div>
+              )}
             </div>
             <Button
               variant="primary"
@@ -64,7 +122,7 @@ const InvoiceListPage = () => {
               </div>
             </div>
           )}
-          {invoices.map((invoice) => (
+          {filteredInvoices.map((invoice) => (
             <InvoiceCard
               key={invoice.id}
               id={invoice.id}
