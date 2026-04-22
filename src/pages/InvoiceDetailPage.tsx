@@ -10,15 +10,24 @@ const InvoiceDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { invoices, markAsPaid } = useInvoices();
+  const { invoices, markAsPaid, deleteInvoice } = useInvoices();
   const invoice = invoices.find((i) => i.id === id);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [editingInvoice, setEditingInvoice] = useState(null);
 
   const openEdit = (invoice: any) => {
     setEditingInvoice(invoice);
     setIsOpen(true);
+  };
+
+  const handleDelete = (id: string) => {
+    if (invoice?.id) {
+      deleteInvoice(id);
+    }
+    setIsDeleteOpen(false);
+    navigate(-1);
   };
 
   return (
@@ -63,7 +72,11 @@ const InvoiceDetailPage = () => {
               text="Edit"
               onClick={openEdit.bind(null, invoice)}
             />
-            <Button variant="delete" text="Delete" />
+            <Button
+              variant="delete"
+              text="Delete"
+              onClick={() => setIsDeleteOpen(true)}
+            />
             <Button
               variant="secondary"
               text="Mark as Paid"
@@ -199,15 +212,36 @@ const InvoiceDetailPage = () => {
 
       {isOpen && (
         <div className="absolute left-0 top-0 h-full w-full z-50 backdrop-blur-sm">
-          {/* <div className="bg-(--bg-drawer) h-full w-[40%] rounded-tr-[20px] rounded-br-[20px] pt-[59px] text-left px-[48px]">
-                  <h2 className="font-bold text-[12px]">New Invoice</h2>
-                </div> */}
-
           <InvoiceForm
             isOpen={isOpen}
             onClose={() => setIsOpen(false)}
             invoiceToEdit={editingInvoice}
           />
+        </div>
+      )}
+
+      {isDeleteOpen && (
+        <div className="absolute left-0 top-0 h-full w-full z-50 bg-black/10 backdrop-blur-xs flex justify-center items-center">
+          <div className="bg-(--bg-card) p-10 rounded-[8px] shadow-card w-[480px] text-left space-y-5">
+            <h2>Confirm Deletion</h2>
+            <span>
+              Are you sure you want to delete invoice #{invoice?.id}? This
+              operation cannot be undone
+            </span>
+
+            <div className="flex justify-end gap-5 items-center mt-10">
+              <Button
+                variant="edit"
+                text="cancel"
+                onClick={() => setIsDeleteOpen(false)}
+              />
+              <Button
+                variant="delete"
+                text="Delete"
+                onClick={() => invoice?.id && handleDelete(invoice.id)}
+              />
+            </div>
+          </div>
         </div>
       )}
     </main>
