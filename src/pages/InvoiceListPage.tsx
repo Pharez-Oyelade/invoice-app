@@ -4,6 +4,7 @@ import { useInvoices } from "../context/InvoiceContext";
 import InvoiceCard from "../components/invoice/InvoiceCard";
 import { useNavigate } from "react-router-dom";
 import InvoiceForm from "../components/invoice/InvoiceForm";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 const InvoiceListPage = () => {
   const { invoices } = useInvoices();
@@ -50,8 +51,22 @@ const InvoiceListPage = () => {
 
           <div className="flex gap-5 items-center w-full justify-end">
             <div className="relative cursor-pointer">
-              <div onClick={toggleDropdown} className="flex gap-1">
+              <div
+                onClick={toggleDropdown}
+                className="flex items-center group gap-1 font-bold"
+              >
                 Filter <span className="hidden md:block">by status</span>
+                {isDropdownOpen ? (
+                  <ChevronUp
+                    size={18}
+                    className="group-hover:text-(--text-form)"
+                  />
+                ) : (
+                  <ChevronDown
+                    size={18}
+                    className="group-hover:text-(--text-form)"
+                  />
+                )}
               </div>
               {isDropdownOpen && (
                 <div className="absolute top-full -right-5 flex flex-col gap-3 w-[192px] bg-(--bg-card) shadow-lg rounded-[8px] p-5 mt-5">
