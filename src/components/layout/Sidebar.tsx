@@ -22,7 +22,7 @@ const Sidebar = () => {
         <div className="line-break"></div>
         <div className="w-10 h-10 rounded-full overflow-hidden flex justify-center items-center m-auto shrink-0">
           <img
-            src="./pharez_avatar.jpg"
+            src="./pharez_avatar.webp"
             alt="User Avatar"
             className="w-full h-full object-cover"
           />
